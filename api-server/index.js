@@ -13,11 +13,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(cors())
-// app.options(process.env.FRONTEND_URL, cors);
+const corsOptions = {
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
 
-app.use('/api/v1/users', userRoutes);
+app.use(cors(corsOptions));
+
 app.use('/api/v1/login', authRoutes);
+app.use('/api/v1', userRoutes);
 
 
 // Basic route
@@ -27,5 +32,5 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.BACKEND_PORT;
 app.listen(PORT, () => {
-  console.log(`SERVER RUNNING ${process.env.BACKEND_URL}:${PORT}`);
+  console.log(`Server Running on PORT:${PORT}`);
 });

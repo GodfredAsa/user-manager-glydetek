@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background-color: #F5F5F5;
+}
+
+
+.btn-valid {
+  background-color: #0d192e;
+  color: white;
+}
+
+.btn-invalid {
+  background-color: #d9d9d9;
+  color: black;
+}
