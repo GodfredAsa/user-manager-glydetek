@@ -1,14 +1,9 @@
-<!-- sidebar.component.html -->
-<nav class="bg-gray-800 text-white h-screen w-20 md:w-64 transition-all duration-300">
-  <ul class="flex flex-col space-y-2 p-4">
-    <li class="flex items-center space-x-4">
-      <i class="fas fa-home"></i>
-      <span class="hidden md:inline">Dashboard</span>
-    </li>
-    <li class="flex items-center space-x-4">
-      <i class="fas fa-user"></i>
-      <span class="hidden md:inline">Users</span>
-    </li>
-    <!-- Add more navigation items as needed -->
+<nav class="bg-[#0D192E] text-white h-screen w-20 md:w-64 transition-all duration-300">
+  <ul class="flex flex-col space-y-2 p-4 pt-36" >
+    <app-nav-el *ngFor="let item of menuItems"
+      iconClasses="{{item.icon}}"
+      label="{{item.name}}"
+      link="{{item.link}}"
+    ></app-nav-el>
   </ul>
 </nav>
