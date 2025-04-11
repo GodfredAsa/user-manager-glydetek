@@ -22,23 +22,6 @@ export class SidebarComponent {
       icon: 'fas fa-envelope',
       link: '/messages'
     },
-    {
-      name: 'Settings',
-      icon: 'fas fa-cog',
-      link: '/settings',
-      subItems: [
-        {
-          name: 'General',
-          icon: 'fa-cogs',
-          link: '/settings/general'
-        },
-        {
-          name: 'Security',
-          icon: 'fa-shield-alt',
-          link: '/settings/security'
-        }
-      ]
-    }
   ];
 
 }

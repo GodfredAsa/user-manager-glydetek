@@ -13,8 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { StatsComponent } from './components/stats/stats.component';
 import { NavElComponent } from './components/nav-el/nav-el.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { NavElComponent } from './components/nav-el/nav-el.component';
     PageLoaderComponent,
     DashboardComponent,
     SidebarComponent,
-    StatsComponent,
     NavElComponent,
+    ProfileComponent,
 
   ],
   imports: [
