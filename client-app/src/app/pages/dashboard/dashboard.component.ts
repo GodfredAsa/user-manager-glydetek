@@ -6,19 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  users = [
+  statsData = [
     {
-      avatar: 'path-to-avatar1.jpg',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      role: 'Administrator',
+      cssClasses: 'bg-blue-100',
+      iconClasses: 'fas fa-users text-blue-500',
+      label: 'Users',
+      amount: '1200'
     },
     {
-      avatar: 'path-to-avatar2.jpg',
-      name: 'Jane Smith',
-      email: 'jane.smith@example.com',
-      role: 'Editor',
+      cssClasses: 'bg-green-100',
+      iconClasses: 'fas fa-dollar-sign text-green-500',
+      label: 'Sales',
+      amount: '$43,000'
     },
-    // Add more user objects as needed
-  ];
+    {
+      cssClasses: 'bg-yellow-100',
+      iconClasses: 'fas fa-chart-line text-yellow-500',
+      label: 'Visitors',
+      amount: '8500'
+    }
+  ]
+
 }
