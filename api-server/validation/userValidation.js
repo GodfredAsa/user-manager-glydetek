@@ -44,10 +44,10 @@ const userValidationSchema = Joi.object({
 
   // Password validation with custom error messages
   password: Joi.string()
-  .pattern(/^(?=(.*[A-Z]))(?=(.*[a-z].*[a-z]))(?=(.*[!@#$%^&*])).{8,}$/)
+  .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/, 'password')
   .required()
   .messages({
-    'string.pattern.base': 'Password must contain at least one uppercase letter, two lowercase letters, and one special character (e.g. !, @, #, $, %, ^, &, *). It must be at least 8 characters long.',
+    'string.pattern.name': 'Password must be at least 6 characters long, include at least one uppercase letter, one lowercase letter, and one special character (e.g., !, @, #, $, %, ^, &, *).',
     'any.required': 'Password is required.'
   })
 });

@@ -4,10 +4,10 @@ const { getUserProfile, createUser } = require('../controllers/userController');
 const { protect } = require('../middleware/authenticationHandler');
 const router = express.Router();
 
-router.route('/')
+router.route('/sign-up')
       .post(createUser)
 
-router.route('/profile')
+router.route('/users/profile')
       .get(protect, getUserProfile);
 
 module.exports = router;
