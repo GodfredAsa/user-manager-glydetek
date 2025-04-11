@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     RedirectComponent,
     PageLoaderComponent,
     DashboardComponent,
+    SidebarComponent,
 
   ],
   imports: [
