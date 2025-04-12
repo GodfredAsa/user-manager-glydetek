@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../environment/environment.dev.';
+import { environment } from '../environment/environment.dev';
 import { CustomResponse } from '../components/response/custom-response';
 import { UtilsService } from './utils.service';
 import { JwtHelperService } from '@auth0/angular-jwt';

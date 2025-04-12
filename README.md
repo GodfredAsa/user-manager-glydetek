@@ -13,7 +13,7 @@ NB: If all is well the console will display no error
 
 
 ## CLIENT APP 
-1. trace this path `client-app/src/app/environment/environment.dev..ts`
+1. trace this path `client-app/src/app/environment/environment.dev.ts`
 2. Replace  `apiUrl: "http://localhost:5001/api/v1"` replace this with the server url printed in the console when started [http://localhost:5001]
 3. Run `npm install`
 4. Run `ng serve`
