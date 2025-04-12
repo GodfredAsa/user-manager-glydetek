@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { SignupRequest } from 'src/app/components/requests/signu-request';
+import { ERROR_OCCURRED } from 'src/app/components/constants/messages';
 import { UserService } from 'src/app/services/user.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
@@ -36,7 +36,33 @@ export class SignUpComponent {
 
 
       signup(){
-        const signupDetails =  {
+        this.showLoading = true;
+        const signupDetails = this.buildSignupDetails(this.signUpForm)
+        this.subscriptions.push(
+          this._userService.signUp({signupDetails}).subscribe({
+            next: (res) => {
+              this.notificationMessage = res.message
+              this.showSuccess = true
+              setTimeout(() => {
+                this.showSuccess = false
+                this.showLoading = false;
+                this._router.navigateByUrl("/")
+              }, 2000);
+            },error: (error: HttpErrorResponse) => {
+              this.showError = true;
+              this.notificationMessage = error.error.message || ERROR_OCCURRED;
+              this.showLoading = false;
+              setTimeout(() => {
+                this.showError = false;
+                this.showLoading = false;
+              }, 4000);
+            }
+          })
+        )
+      }
+
+      buildSignupDetails(form: FormGroup): any{
+        return {
           firstName: this.signUpForm.value.firstName,
           lastName: this.signUpForm.value.lastName,
           preferredName: this.signUpForm.value.preferredName,
@@ -44,35 +70,6 @@ export class SignUpComponent {
           email: this.signUpForm.value.email,
           password: this.signUpForm.value.password
         }
-
-        this.showLoading = true;
-
-        this.subscriptions.push(
-          this._userService.signUp({signupDetails}).subscribe({
-            next: (res) => {
-              this.notificationMessage = res.message
-              this.showSuccess = true
-              console.log(res);
-              setTimeout(() => {
-                this.showSuccess = false
-                this.showLoading = false;
-                this._router.navigateByUrl("/")
-              }, 4000);
-
-            },error: (error: HttpErrorResponse) => {
-              this.showError = true;
-
-              this.notificationMessage = error.error?.message || "An unexpected error occurred during sign-in.";
-              this.showLoading = false;
-
-          setTimeout(() => {
-            this.showError = false;
-            this.showLoading = false;
-          }, 4000);
-
-            }
-          })
-        )
       }
 
 

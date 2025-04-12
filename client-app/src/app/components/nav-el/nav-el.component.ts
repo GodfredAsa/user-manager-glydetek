@@ -10,5 +10,12 @@ export class NavElComponent {
   @Input() iconClasses: string;
   @Input() label: string;
   @Input() link: string;
+  @Input() onClick?: () => void;
+
+  handleClick() {
+    if(this.onClick) {
+      this.onClick();
+    }
+  }
 
 }

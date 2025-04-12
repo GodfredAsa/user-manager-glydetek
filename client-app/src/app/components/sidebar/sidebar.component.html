@@ -1,9 +1,14 @@
-<nav class="bg-[#0D192E] text-white h-screen w-16 md:w-48 transition-all duration-300">
+<nav class="bg-[#0d192e] text-white h-screen w-16 md:w-48 transition-all duration-300">
   <ul class="flex flex-col space-y-2 p-4 pt-36" >
     <app-nav-el *ngFor="let item of menuItems"
       iconClasses="{{item.icon}}"
       label="{{item.name}}"
       link="{{item.link}}"
+    ></app-nav-el>
+    <app-nav-el
+      [iconClasses]="'fas fa-sign-out-alt'"
+      [label]="'Signout'"
+      (click)="handleClick()"
     ></app-nav-el>
   </ul>
 </nav>

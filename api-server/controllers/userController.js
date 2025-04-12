@@ -32,11 +32,11 @@ const createUser = async (req, res) => {
 
 const getUserProfile = async (req, res) => {
   try {
-    const user = req.user;
+    const email = req.params.email;
+    const user = await User.findOne({email}).select('-password')
     if (!user) {
-      return res.status(404).json(retResponse(404, "User not found", null));
+      return res.status(404).json(retResponse(404, "User with email not found", null));
     }
-
     res.status(200).json(retResponse(200, null , user));
   } catch (error) {
     console.error("Error getting user profile:", error);

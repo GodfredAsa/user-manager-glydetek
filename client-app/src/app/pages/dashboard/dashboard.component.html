@@ -1,15 +1,17 @@
 <div class="flex h-screen">
   <app-sidebar></app-sidebar>
 
- <section class="flex-1 p-6 overflow-auto">
-    <app-profile
-    [firstName]="'Mariasata'"
-    [lastName]="'Asumadu Asamoah'"
-    [preferredName]="'DeGREAT Asas'"
-    [email]="'mariatasat@gmail.com'"
-    [gender]="'Gender'"
-    [createdAt]="'24th July 2025'"
-    [updatedAt]="'24th July 2025'"
-    ></app-profile>
+  <page-loader *ngIf="!userProfileData"></page-loader>
+
+ <section class="flex-1 p-6 overflow-auto" *ngIf="userProfileData">
+    <user-profile
+    firstName="{{userProfileData.firstName}}"
+    lastName="{{userProfileData.lastName}}"
+    preferredName="{{userProfileData.preferredName}}"
+    email="{{userProfileData.email}}"
+    gender="{{userProfileData.gender}}"
+    createdAt="{{userProfileData.createdAt }}"
+    updatedAt="{{userProfileData.updatedAt}}"
+    ></user-profile>
 </section>
 </div>

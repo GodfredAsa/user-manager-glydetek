@@ -11,11 +11,10 @@ const routes: Routes = [
     path: "dashboard", component: DashboardComponent,
     children: [
       { path: "", redirectTo: "", pathMatch: "full" },
-      // { path: "", component: UserDashboardComponent },
-
+      { path: '**', component: LoginComponent }
     ]
-
-  }
+  },
+  { path: '**', component: LoginComponent }
 
 ];
 
@@ -24,6 +23,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-// border-[#c0c5cf]border-[#c0c5cf]

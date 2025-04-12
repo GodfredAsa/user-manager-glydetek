@@ -1,11 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CustomResponse } from 'src/app/components/response/custom-response';
+import { UserService } from 'src/app/services/user.service';
+import { UtilsService } from 'src/app/services/utils.service';
+import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
+  private subscription: Subscription[] = []
+  public userProfileData: CustomResponse;
+
+  constructor(
+    private _userService: UserService,
+    private _utilsService: UtilsService,
+    private _authenticationService: AuthenticationService
+  ){}
+
+
+  ngOnInit(): void {
+    this._authenticationService.isUserLoggedIn()
+    if(!this._authenticationService.isUserLoggedIn()){
+      this._authenticationService.logoutUser();
+    }
+
+    this.getUserProfile()
+  }
+
+  getUserProfile(){
+    const email = this._utilsService.getValueFromLocalStorage("email");
+    this.subscription.push(
+      this._userService.getUserProfile(email).subscribe({
+        next: (res: CustomResponse) => {
+          this.userProfileData = res.data
+          console.log(this.userProfileData);
+        }, error: (error: HttpErrorResponse) => {
+          console.log(error.error?.message);
+        }
+      })
+    )
+
+
+  }
+
+
   statsData = [
     {
       cssClasses: 'bg-blue-100',

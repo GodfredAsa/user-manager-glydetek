@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-page-loader',
+  selector: 'page-loader',
   templateUrl: './page-loader.component.html',
   styleUrls: ['./page-loader.component.css']
 })

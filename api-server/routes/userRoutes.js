@@ -7,7 +7,7 @@ const router = express.Router();
 router.route('/sign-up')
       .post(createUser)
 
-router.route('/users/profile')
+router.route('/users/:email/profile')
       .get(protect, getUserProfile);
 
 module.exports = router;
