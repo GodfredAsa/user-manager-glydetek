@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-redirect',
+  selector: 'navigate-to',
   templateUrl: './redirect.component.html',
   styleUrls: ['./redirect.component.css']
 })

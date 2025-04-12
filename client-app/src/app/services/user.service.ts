@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomResponse } from '../components/response/custom-response';
 import { environment } from '../environment/environment.dev.';
-import { SignupRequest } from '../components/requests/signu-request';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +20,10 @@ export class UserService {
     public signUp({signupDetails}): Observable<CustomResponse | HttpErrorResponse>{
       return this.http.post<CustomResponse | HttpErrorResponse>(`${this.host}/sign-up`, signupDetails)
     }
+
+    public getUserProfile(email: string): Observable<CustomResponse | HttpErrorResponse>{
+      return this.http.get<CustomResponse | HttpErrorResponse>(`${this.host}/users/${email}/profile`)
+    }
+
+
 }
